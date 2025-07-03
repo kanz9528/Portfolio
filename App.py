@@ -11,12 +11,22 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
 def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    try:
+        with open(file_name) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.error("CSS file not found. Using default styles.")
+        # Fallback minimal CSS
+        st.markdown("""
+        <style>
+            .stApp { background-color: #f5f5f5; }
+            .stButton>button { border-radius: 5px; }
+        </style>
+        """, unsafe_allow_html=True)
 
-local_css("style.css")  # You can create a style.css file for custom styles
+local_css("style.css")
+
 
 # Load data (you can replace this with a database connection)
 def load_data():
