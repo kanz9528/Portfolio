@@ -1,0 +1,149 @@
+/* Main app styling */
+.stApp {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* Profile section */
+.profile-header {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.profile-title {
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.profile-about {
+    margin-bottom: 1.5rem;
+    color: #34495e;
+}
+
+/* Skills section */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    background-color: #e0f7fa;
+    padding: 0.4rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    color: #00796b;
+    font-weight: 500;
+}
+
+/* Contact section */
+.contact-info {
+    margin-top: 1.5rem;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #2980b9;
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+}
+
+/* Projects section */
+.project-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.project-title {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.project-description {
+    color: #34495e;
+    margin-bottom: 1rem;
+}
+
+.project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    background-color: #3498db;
+    color: white;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.project-link:hover {
+    background-color: #2980b9;
+}
+
+.featured-badge {
+    display: inline-block;
+    background-color: #f1c40f;
+    color: #2c3e50;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+/* Edit mode styling */
+.edit-control {
+    margin-bottom: 1rem;
+}
+
+.delete-btn {
+    background-color: #e74c3c !important;
+    color: white !important;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .project-card {
+        padding: 1rem;
+    }
+    
+    .project-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
