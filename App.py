@@ -10,7 +10,36 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+from streamlit.components.v1 import html
 
+def render_project_card(project):
+    with open("e/project_card.html") as f:
+        template = f.read()
+    
+    # Replace placeholders with actual project data
+    html_content = template.replace("{{ title }}", project["title"]) \
+                          .replace("{{ description }}", project["description"]) \
+                          .replace("{{ featured }}", "true" if project.get("featured") else "") \
+                          .replace("{{ date }}", project["date"])
+    
+    # Technologies
+    tech_html = "".join([f'<span class="skill-tag">{tech}</span>' for tech in project["technologies"]])
+    html_content = html_content.replace("{% for tech in technologies %}{% endfor %}", tech_html)
+    
+    # Links
+    links_html = ""
+    if project["links"].get("demo"):
+        links_html += f'<a href="{project["links"]["demo"]}" class="project-link" target="_blank">Live Demo</a>'
+    if project["links"].get("code"):
+        links_html += f'<a href="{project["links"]["code"]}" class="project-link" target="_blank">View Code</a>'
+    html_content = html_content.replace('<div class="project-links">{% if links.demo %}{% endif %}{% if links.code %}{% endif %}</div>', 
+                                      f'<div class="project-links">{links_html}</div>')
+    
+    # Image
+    img_html = f'<img src="{project["image"]}" alt="{project["title"]}" style="max-width: 100%; border-radius: 0.3rem; margin-bottom: 1rem;">' if project.get("image") else ""
+    html_content = html_content.replace('{% if image %}{% endif %}', img_html)
+    
+    html(html_content, height=300)
 def local_css(file_name):
     try:
         with open(file_name) as f:
